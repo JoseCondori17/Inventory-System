@@ -1,103 +1,42 @@
-import { DataTable } from "@/components/common/data-table/data-table";
-import { Button } from "@/components/ui/button";
-import { Product } from "@/utils/types/product";
-import { columns } from "@/components/common/data-table/columns";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
-import SheetInventory from "@/components/common/sheet/sheetInventory";
+'use client'
+import { DataTableOrders } from "@/components/common/data-table/data-table-orders/data-table";
+import { Order } from "@/utils/types/order";
+import { columnsOrders } from "@/components/common/data-table/data-table-orders/columns";
+import { useState, useEffect } from "react";
 
-function example(): Product[]{
-  const date = new Date("15-12-2024")
-  return [
-    {
-      "id": "1SF3SA",
-      "name": "Product A",
-      "category": "Electronics",
-      "sku": "PROD001",
-      "entryDate": date,
-      "lastUpdateDate": date,
-      "stock": 100,
-      "unitPrice": 29.99,
-      "status": "available"
-    },
-    {
-      "id": "1SF3SA",
-      "name": "Product B",
-      "category": "Clothing",
-      "sku": "PROD002",
-      "entryDate": date,
-      "lastUpdateDate": date,
-      "stock": 50,
-      "unitPrice": 19.99,
-      "status": "out of stock"
-    },
-    {
-      "id": "1SF3SA",
-      "name": "Product C",
-      "category": "Home & Kitchen",
-      "sku": "PROD003",
-      "entryDate": date,
-      "lastUpdateDate": date,
-      "stock": 75,
-      "unitPrice": 39.99,
-      "status": "available"
-    },{
-      "id": "1SF3SA",
-      "name": "Product A",
-      "category": "Electronics",
-      "sku": "PROD001",
-      "entryDate": date,
-      "lastUpdateDate": date,
-      "stock": 100,
-      "unitPrice": 29.99,
-      "status": "available"
-    },
-    {
-      "id": "1SF3SA",
-      "name": "Product B",
-      "category": "Clothing",
-      "sku": "PROD002",
-      "entryDate": date,
-      "lastUpdateDate": date,
-      "stock": 50,
-      "unitPrice": 19.99,
-      "status": "out of stock"
-    },
-    {
-      "id": "1SF3SA",
-      "name": "Product C",
-      "category": "Home & Kitchen",
-      "sku": "PROD003",
-      "entryDate": date,
-      "lastUpdateDate": date,
-      "stock": 75,
-      "unitPrice": 39.99,
-      "status": "available"
-    },
-    {
-      "id": "1SF3SA",
-      "name": "Product A",
-      "category": "Electronics",
-      "sku": "PROD001",
-      "entryDate": date,
-      "lastUpdateDate": date,
-      "stock": 100,
-      "unitPrice": 29.99,
-      "status": "available"
-    },
-  ]  
+async function getData(){
+  try {
+    const response = await fetch('https://x8ki-letl-twmt.n7.xano.io/api:uRLR9xAm/order', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al enviar la solicitud');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+  }
 }
 
 interface OrdersProps {}
 
 const Orders: React.FC<OrdersProps> = ({}) => {   
-  const data = example()
+  const [data, setData] = useState<Order[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedData = await getData();
+      if (fetchedData) {
+        setData(fetchedData);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <main className="m-5 h-full space-y-4">
@@ -105,7 +44,7 @@ const Orders: React.FC<OrdersProps> = ({}) => {
         <h1 className="text-2xl text-black font-bold">Orders</h1>
       </div>
       <div>
-        <DataTable columns={columns} data={data}></DataTable>
+        <DataTableOrders columns={columnsOrders} data={data}></DataTableOrders>
       </div>
     </main>
   )

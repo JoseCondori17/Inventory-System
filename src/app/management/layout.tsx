@@ -12,7 +12,7 @@ export default function ManagementLayout({
     <div className="flex h-screen">
       <SideBar/>
       <Separator className="w-[1px] bg-neutral-200" orientation="vertical"></Separator>
-      <div className="flex-1">
+      <div className="flex-1 overflow-auto">
         <HeaderNav name={'Eduardo Condori'} role={'Administrator'}></HeaderNav>
         <Separator className="bg-neutral-200 h-[1px]"></Separator>
         <div className="flex-1 ml-4 mr-4 overflow-y-auto">

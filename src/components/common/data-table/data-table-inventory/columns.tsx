@@ -1,5 +1,4 @@
 'use client'
-
 import { ColumnDef } from '@tanstack/react-table'
 import { Product } from '@/utils/types/product'
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline"
@@ -23,9 +22,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { ArrowUpDown } from "lucide-react"
-import SheetInventory from '../sheet/sheetInventory'
+import SheetInventory from '../../sheet/sheetInventory'
 
-export const columns: ColumnDef<Product>[] = [
+export const columnsInventory: ColumnDef<Product>[] = [
   {
     accessorKey: 'name',
     header: ({ column }) => {

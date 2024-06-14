@@ -12,7 +12,7 @@ export function SignInSection(){
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-center text-2xl">Welcome to Josee</CardTitle>
+        <CardTitle className="text-center text-2xl">Welcome to IMSA</CardTitle>
       </CardHeader>
       <CardContent>
         <SignInForm />

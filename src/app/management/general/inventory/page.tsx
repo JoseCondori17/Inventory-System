@@ -1,16 +1,8 @@
 'use client'
-import { DataTable } from "@/components/common/data-table/data-table";
+import { DataTableInventory } from "@/components/common/data-table/data-table-inventory/data-table";
 import { Button } from "@/components/ui/button";
 import { Product } from "@/utils/types/product";
-import { columns } from "@/components/common/data-table/columns";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+import { columnsInventory } from "@/components/common/data-table/data-table-inventory/columns";
 import SheetInventory from "@/components/common/sheet/sheetInventory";
 import { useState, useEffect } from "react";
 
@@ -57,7 +49,7 @@ const Inventory: React.FC<InventoryProps> = ({}) => {
         ></SheetInventory>
       </div>
       <div className="flex-1">
-        <DataTable columns={columns} data={data}></DataTable>
+        <DataTableInventory columns={columnsInventory} data={data}></DataTableInventory>
       </div>
     </main>
   )

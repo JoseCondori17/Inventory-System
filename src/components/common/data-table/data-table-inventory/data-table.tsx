@@ -23,15 +23,15 @@ import {
 } from "@/components/ui/table"
 import { Input } from "@/components/ui/input" 
 import { Button } from "@/components/ui/button"
-import FilterDataTable from "../popover/filter/filter-data-table/filterDataTable"
-import ExportDataTable from "../popover/export/export-data-table/exportDataTable"
+import FilterDataTable from "../../popover/filter/filter-data-table/filterDataTable"
+import ExportDataTable from "../../popover/export/export-data-table/exportDataTable"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
 }
 
-export function DataTable<TData, TValue>({
+export function DataTableInventory<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -68,7 +68,7 @@ export function DataTable<TData, TValue>({
         />
         <div className="flex space-x-2">
           <FilterDataTable></FilterDataTable>
-          <ExportDataTable></ExportDataTable>
+          <ExportDataTable data={data}></ExportDataTable>
         </div>
       </div>
       <Table>
