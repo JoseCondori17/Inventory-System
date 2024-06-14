@@ -82,9 +82,9 @@ export const columnsOrders: ColumnDef<Order>[] = [
       )
     },
     cell: ({ row }) => {
-      const date = new Date(row.getValue("purchaseTime"))
-      const formatted = format(date, "dd MMM yy");
-
+      /* const date = new Date(row.getValue("purchaseTime"))
+      const formatted = format(date, "dd MMM yy"); */
+      return <div className='text-center'>{row.getValue("purchaseTime")}</div>
     },
   },
   {
@@ -101,10 +101,10 @@ export const columnsOrders: ColumnDef<Order>[] = [
       )
     },
     cell: ({ row }) => {
-      const date = new Date(row.getValue("purchaseTime"))
-      const formatted = format(date, "HH:mm");
+      /* const date = new Date(row.getValue("purchaseTime"))
+      const formatted = format(date, "HH:mm"); */
 
-      return <div className='text-center'>{formatted}</div>
+      return <div className='text-center'>{row.getValue("purchaseTime")}</div>
     },
   },
   {
