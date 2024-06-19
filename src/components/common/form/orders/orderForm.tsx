@@ -132,8 +132,10 @@ export function OrderForm() {
                   <Calendar
                     mode="single"
                     selected={field.value}
-                    onSelect={(date: Date | Date[]) => {
-                      form.setValue('purchaseTime', Array.isArray(date) ? date[0] : date);
+                    onSelect={(date: Date | undefined) => {
+                      if (date) {
+                        form.setValue('purchaseTime', date);
+                      }
                     }}
                     disabled={(date) =>
                       date > new Date() || date < new Date("1900-01-01")
