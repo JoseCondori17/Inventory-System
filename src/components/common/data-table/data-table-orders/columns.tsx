@@ -69,7 +69,7 @@ export const columnsOrders: ColumnDef<Order>[] = [
     },
   },
   {
-    accessorKey: 'date',
+    accessorKey: "purchaseTime",
     header: ({ column }) => {
       return (
         <Button
@@ -82,28 +82,6 @@ export const columnsOrders: ColumnDef<Order>[] = [
       )
     },
     cell: ({ row }) => {
-      /* const date = new Date(row.getValue("purchaseTime"))
-      const formatted = format(date, "dd MMM yy"); */
-      return <div className='text-center'>{row.getValue("purchaseTime")}</div>
-    },
-  },
-  {
-    accessorKey: 'time',
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Time
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => {
-      /* const date = new Date(row.getValue("purchaseTime"))
-      const formatted = format(date, "HH:mm"); */
-
       return <div className='text-center'>{row.getValue("purchaseTime")}</div>
     },
   },

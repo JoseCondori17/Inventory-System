@@ -3,6 +3,22 @@ import { DataTableOrders } from "@/components/common/data-table/data-table-order
 import { Order } from "@/utils/types/order";
 import { columnsOrders } from "@/components/common/data-table/data-table-orders/columns";
 import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import AddIcon from "@/components/icon/addIcon";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent
+} from "@/components/ui/card";
+import OrderForm from "@/components/common/form/orders/orderForm";
 
 async function getData(){
   try {
@@ -42,6 +58,22 @@ const Orders: React.FC<OrdersProps> = ({}) => {
     <main className="m-5 h-full space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl text-black font-bold">Orders</h1>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant={'outline'} size={'sm'} className="space-x-2 rounded-xl select-none">
+              <AddIcon className="size-3"></AddIcon>
+              <span>Add order</span>            
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle className="text-center">New Order</DialogTitle>
+              <DialogDescription asChild>
+                <OrderForm></OrderForm>
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
       <div>
         <DataTableOrders columns={columnsOrders} data={data}></DataTableOrders>
